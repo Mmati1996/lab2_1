@@ -2,21 +2,28 @@ package edu.iis.mto.bsearch;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTest {
+    int key = 12;
+    int wrongKey = 13;
+    int[] sequenceOfLengthOne = new int[] {12};
+    int[] longSequence = new int[] {12,15,52,127};
+    BinarySearch bs = new BinarySearch().create();
 
 
     @Test
     void isInSequenceOfLengthOneTest(){
-        int key = 12;
-        int[] sequence = new int[] {12};
-        BinarySearch bs = new BinarySearch();
-        bs.create();
-        SearchResult sr = bs.search(key,sequence);
+        SearchResult sr = bs.search(key,sequenceOfLengthOne);
         assertTrue(sr.isFound());
-        assertEquals(key,sequence[sr.getPosition()]);
+        assertEquals(key,sequenceOfLengthOne[sr.getPosition()]);
+    }
+
+    @Test
+    void isNotInSequenceOfLengthOneTest(){
+        SearchResult sr = bs.search(wrongKey,sequenceOfLengthOne);
+        assertFalse(sr.isFound());
+        assertEquals(-1,sr.getPosition());
     }
 }
 
