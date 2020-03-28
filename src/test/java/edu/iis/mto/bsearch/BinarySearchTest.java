@@ -8,7 +8,7 @@ class BinarySearchTest {
     int key = 12;
     int wrongKey = 13;
     int[] sequenceOfLengthOne = new int[] {12};
-    int[] longSequence = new int[] {12,15,52,127};
+    int[] longSequence = new int[] {12,15,52,127,500};
     BinarySearch bs = new BinarySearch().create();
 
 
@@ -24,6 +24,13 @@ class BinarySearchTest {
         SearchResult sr = bs.search(wrongKey,sequenceOfLengthOne);
         assertFalse(sr.isFound());
         assertEquals(-1,sr.getPosition());
+    }
+
+    @Test
+    void isFirstElementOfSequenceTest(){
+        SearchResult sr = bs.search(key,longSequence);
+        assertTrue(sr.isFound());
+        assertEquals(key,longSequence[sr.getPosition()]);
     }
 }
 
