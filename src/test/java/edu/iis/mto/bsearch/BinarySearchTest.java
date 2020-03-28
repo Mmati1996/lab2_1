@@ -10,8 +10,9 @@ class BinarySearchTest {
     int[] sequenceOfLengthOne = new int[] {12};
     int[] longSequence = new int[] {12,15,52,127,500};
     int[] emptySequence = new int[] {};
-    int[] sequeneOfTwelves = new int[] {12,12,12,12,12,12};
+    int[] sequenceOfTwelves = new int[] {12,12,12,12,12,12};
     int[] sequenceWithNegativeNumbers = new int[] {12,15,52,127,500,-5,-14};
+    int[] decreasingSequence = new int[] {500,42,15,12,3,1};
     BinarySearch bs = new BinarySearch().create();
 
 
@@ -76,9 +77,9 @@ class BinarySearchTest {
 
     @Test
     void allElementsAreTheSameNumberTest(){
-        SearchResult sr = bs.search(key,sequeneOfTwelves);
+        SearchResult sr = bs.search(key, sequenceOfTwelves);
         assertTrue(sr.isFound());
-        assertEquals(key,sequeneOfTwelves[sr.getPosition()]);
+        assertEquals(key, sequenceOfTwelves[sr.getPosition()]);
     }
 
     @Test
@@ -86,6 +87,13 @@ class BinarySearchTest {
         SearchResult sr = bs.search(key,sequenceWithNegativeNumbers);
         assertTrue(sr.isFound());
         assertEquals(key,sequenceWithNegativeNumbers[sr.getPosition()]);
+    }
+
+    @Test
+    void decreasingSequenceTest(){
+        SearchResult sr = bs.search(wrongKey,decreasingSequence);
+        assertFalse(sr.isFound());
+        assertEquals(-1,sr.getPosition());
     }
 
 }
