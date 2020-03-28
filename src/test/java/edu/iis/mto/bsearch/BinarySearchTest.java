@@ -40,5 +40,13 @@ class BinarySearchTest {
         assertTrue(sr.isFound());
         assertEquals(key,longSequence[sr.getPosition()]);
     }
+
+    @Test
+    void isCenterElementOfSequenceTest(){
+        key=52;
+        SearchResult sr = bs.search(key,longSequence);
+        assertTrue(sr.isFound());
+        assertEquals(key,longSequence[sr.getPosition()]);
+    }
 }
 
