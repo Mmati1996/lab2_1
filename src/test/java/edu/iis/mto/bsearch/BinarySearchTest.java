@@ -65,5 +65,12 @@ class BinarySearchTest {
         });
     }
 
+    @Test
+    void sequenceIsNULLTest(){
+        assertThrows(NullPointerException.class,()->{
+            bs.search(key,null);
+        });
+    }
+
 }
 
