@@ -10,6 +10,7 @@ class BinarySearchTest {
     int[] sequenceOfLengthOne = new int[] {12};
     int[] longSequence = new int[] {12,15,52,127,500};
     int[] emptySequence = new int[] {};
+    int[] sequeneOfTwelves = new int[] {12,12,12,12,12,12};
     BinarySearch bs = new BinarySearch().create();
 
 
@@ -70,6 +71,13 @@ class BinarySearchTest {
         assertThrows(NullPointerException.class,()->{
             bs.search(key,null);
         });
+    }
+
+    @Test
+    void allElementsAreTheSameNumberTest(){
+        SearchResult sr = bs.search(key,sequeneOfTwelves);
+        assertTrue(sr.isFound());
+        assertEquals(key,sequeneOfTwelves[sr.getPosition()]);
     }
 
 }
