@@ -48,5 +48,14 @@ class BinarySearchTest {
         assertTrue(sr.isFound());
         assertEquals(key,longSequence[sr.getPosition()]);
     }
+
+    @Test
+    void isNotElementOfSequenceTest(){
+        SearchResult sr = bs.search(wrongKey,longSequence);
+        assertFalse(sr.isFound());
+        assertEquals(-1,sr.getPosition());
+    }
+
+
 }
 
